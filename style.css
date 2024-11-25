@@ -18,13 +18,14 @@ body {
   width: 250px;
   height: 500px;
   background-color: cyan;
+  text-align: center;
 }
 
 #pokemon-list {
   width: 250px;
   height: 500px;
   background-color: chocolate;
-  font-size: 19px;
+  font-size: 18px;
   overflow-y: auto;
 }
 
@@ -33,5 +34,14 @@ body {
   border-radius: 10px;
   background-color: white;
   margin: 5px;
-  padding: 4px;
+  padding: 5px;
+  text-align: center;
+}
+
+#pokemon-info {
+  width: 160px;
+  height: 160px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: white;
 }

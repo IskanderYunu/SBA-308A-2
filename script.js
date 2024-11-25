@@ -32,26 +32,40 @@ async function getPokemon(num) {
 
   let res = await fetch(url);
   let pokemon = await res.json();
-  //console.log(pokemon);
 
   let pokemonName = pokemon["name"];
   let pokemonType = pokemon["types"];
-  let pokemonImg = pokemon["sprites"]["front_default"]["back_default"];
+  let pokemonImg = pokemon["sprites"]["front_default"];
 
   res = await fetch(pokemon["species"]["url"]);
   let pokemonDesc = await res.json();
 
-  //console.log(pokemonDesc);
   pokemonDesc = pokemonDesc["flavor_text_entries"][10]["flavor_text"];
 
   pokedex[num] = {
     name: pokemonName,
     img: pokemonImg,
-    type: pokemonType,
+    types: pokemonType,
     desc: pokemonDesc,
   };
 }
 
 function updatePokemon() {
   document.getElementById("pokemon-img").src = pokedex[this.id]["img"];
+
+  // Clear previous types
+  let typesDiv = document.getElementById("pokemon-types");
+  while (typesDiv.firstChild) {
+    typesDiv.firstChild.remove();
+  }
+
+  // Update Pokemon types
+  let types = pokedex[this.id]["types"]; // Correct key "types"
+  for (let i = 0; i < types.length; i++) {
+    let type = document.createElement("span");
+    type.innerText = types[i]["type"]["name"].toUpperCase();
+    type.classList.add("type-box");
+    type.classList.add(types[i]["type"]["name"]); // Add background and font color
+    typesDiv.append(type);
+  }
 }
