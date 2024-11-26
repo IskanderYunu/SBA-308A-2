@@ -1,4 +1,4 @@
-export const pokedex = {}; // Shared data object
+export const pokedex = {}; // {1 : {"name" : "pokemon", "img" : url, "type" : ["grass", "poison"], "desc" : "...."} }
 
 export async function fetchPokemon(num) {
   const url = `https://pokeapi.co/api/v2/pokemon/${num}`;
